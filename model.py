@@ -135,6 +135,25 @@ def GetNameOfObject(object_id):
 
     return result[0]
 
+def GetIdsThatContainInName(object_name):
+    with connection.cursor() as cursor:
+        # Using a parameterized query to avoid SQL injection
+        query = sql.SQL("""
+            SELECT
+                object_id
+            FROM
+                objects
+            WHERE
+                name LIKE %s
+        """)
+        cursor.execute(query, (f"%{object_name}%",))
+        result = cursor.fetchall()
+    
+    # Convert result as a list of integers
+    result = [x[0] for x in result]
+
+    return result
+
 
 def SetObjectParent(object_id, parent_object_id):
     with connection.cursor() as cursor:
