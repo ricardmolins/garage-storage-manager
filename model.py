@@ -90,7 +90,8 @@ def AddObjectToVault(object_name):
 
     connection.commit()
 
-def DeleteObjectFromVault(object_id):
+
+def DeleteObject(object_id):
     with connection.cursor() as cursor:
         # Using a parameterized query to avoid SQL injection
         query = sql.SQL("""
@@ -133,6 +134,22 @@ def GetNameOfObject(object_id):
         result = cursor.fetchone()
 
     return result[0]
+
+
+def SetObjectParent(object_id, parent_object_id):
+    with connection.cursor() as cursor:
+        # Using a parameterized query to avoid SQL injection
+        query = sql.SQL("""
+            UPDATE
+                objects
+            SET
+                parent_object_id = %s
+            WHERE
+                object_id = %s
+        """)
+        cursor.execute(query, (parent_object_id, object_id))
+
+    connection.commit()
 
 # Read the database connection parameters from the config file
 with open("config.yaml", "r") as f:

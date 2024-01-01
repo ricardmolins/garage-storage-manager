@@ -16,7 +16,7 @@ class SortingArea(ttk.Frame):
         self.label_add_object.grid(column=0, row=0)
         self.entry_add_object = ttk.Entry(self, width=50)
         self.entry_add_object.grid(column=1, row=0)
-        self.button_add_object = ttk.Button(self, text="Add", command=lambda: self.AddObject(self.entry_add_object.get()))
+        self.button_add_object = ttk.Button(self, text="Create Object", command=lambda: self.AddObject(self.entry_add_object.get()))
         self.button_add_object.grid(column=2, row=0)
 
         # Create a list box in the object distribution frame
