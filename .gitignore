@@ -1,0 +1,4 @@
+*.yaml
+venv/**
+__pycache__/**
+**.pyc
