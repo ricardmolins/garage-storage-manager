@@ -10,7 +10,9 @@ class ObjectDistribution(ttk.Frame):
         self.master = master
 
         self.columnconfigure(0, weight=1) 
-        self.rowconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.rowconfigure(0, weight=20)
+        self.rowconfigure(1, weight=80)
 
         self.entry_find_object_var = tk.StringVar(value="")
         self.relevant_objects = []
@@ -19,7 +21,7 @@ class ObjectDistribution(ttk.Frame):
         self.label_find_object = ttk.Label(self, text="Find Object")
         self.label_find_object.grid(row=0, column=0, sticky="nsew")
         self.entry_find_object = tk.Entry(self, textvariable=self.entry_find_object_var)
-        self.entry_find_object.grid(row=0, column=1, sticky="nsew")
+        self.entry_find_object.grid(row=0, column=1, sticky="ew")
 
         self.entry_find_object_var.trace_add("write", self.OnFindObjectChanged)  
 

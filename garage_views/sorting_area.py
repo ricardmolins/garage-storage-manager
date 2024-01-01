@@ -10,6 +10,11 @@ class SortingArea(ttk.Frame):
         super().__init__(master)
         self.master = master
 
+        self.columnconfigure(0, weight=1)
+        self.columnconfigure(1, weight=1)
+        self.columnconfigure(2, weight=1)
+        self.rowconfigure(0, weight=1)
+        self.rowconfigure(1, weight=1)
 
         # Create a label to add a new object
         self.label_add_object = ttk.Label(self, text="Object Name")
